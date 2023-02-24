@@ -2,23 +2,58 @@
 #include <stdlib.h>
 #include <string.h>
 
-int admin() {
+#include "utils.h"
+
+int adminMain() {
 	system("cls");
-	char clave[30];
-	FILE *fp = fopen("data/superuser/admin", "r");
-	
 	fflush(stdin);
+	
+	char clave[30];
 	printf("Escriba la clave de administrador: ");
 	gets(clave);
 	
-	char file_text[30]; 
-	fscanf(fp, "%s", file_text);
-	
-	if (strcmp(clave, file_text) != 0) {
-		printf("La clave no conincide con la del administrador");
+	if (verificarAdmin(clave) != 0) {
+		printf("La clave no coincide con la del administrador");
 		system("pause");
-		return 1;
 	}
+	
+	char opc = '0'
+	
+	do {
+		fflush(stdin);
+		
+		printf("Panel De Administrador\n");
+		printf("1-Reportes\n2-Productos\n3-Cambiar Clave\n4-Restaurar Sistema\n5-Salir");
+		scanf("%c", &opc);
+		
+		switch (opc) {
+			
+			case 1: {
+				break;
+			}
+			
+			case 2: {
+				break;
+			}
+			
+			case 3: {
+		
+				break;
+			}
+			
+			case 4: {
+				
+				break;
+			}
+			
+			case 5: {
+				
+				break;
+			}
+		}
+		
+	} while (opc != '5');
+	
 	
 	
 	return 0;
