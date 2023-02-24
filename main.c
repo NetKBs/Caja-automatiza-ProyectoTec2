@@ -3,8 +3,7 @@
 #include <string.h>
 #include <sys/stat.h> 
 
-#define true 0
-#define false 1
+#include "admin.c"
 
 void crearAdmin();
 
@@ -12,10 +11,43 @@ int main() {
 	struct stat file_stat; 
   	
   	// Checar si existen los archivos de administrador (primera vez)
-    if (stat("./data/superuser/admin", &file_stat) != true || file_stat.st_size <= 0 ) {
+    if (stat("./data/superuser/admin", &file_stat) != 0 || file_stat.st_size <= 0 ) {
     	crearAdmin();
     }
 	
+	char opc = '0';
+	do {
+		fflush(stdin);
+		system("cls");
+		
+		printf("Iniciar menu de:\n");
+		printf("1-Adminastrador\n");
+		printf("2-Cliente\n");
+		printf(">>> ");
+		scanf("%c", &opc);
+
+		switch (opc) {
+			
+			case '1': {
+				admin();
+				system("pause");
+				break;
+			}
+			case '2': {
+				printf("2");
+				system("pause");
+				break;
+			}
+			
+			default: {
+				printf("incorrecto");
+				system("pause");
+				break;
+			}
+			
+		}
+		
+	} while (1);
 
 
 	return 0;
