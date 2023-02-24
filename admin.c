@@ -4,7 +4,11 @@
 
 #include "utils.h"
 
+
+int cambiarClave();
+
 int adminMain() {
+	
 	system("cls");
 	fflush(stdin);
 	
@@ -15,9 +19,11 @@ int adminMain() {
 	if (verificarAdmin(clave) != 0) {
 		printf("La clave no coincide con la del administrador");
 		system("pause");
-	}
+		return 1;
+	} 
 	
-	char opc = '0'
+	
+	char opc = '0';
 	
 	do {
 		fflush(stdin);
@@ -28,33 +34,61 @@ int adminMain() {
 		
 		switch (opc) {
 			
-			case 1: {
+			case '1': 
 				break;
-			}
 			
-			case 2: {
-				break;
-			}
-			
-			case 3: {
 		
+			case '2': 
 				break;
-			}
 			
-			case 4: {
+			
+			case '3': 
+				cambiarClave();
+				break;
+			
+			
+			case '4': 
 				
 				break;
-			}
 			
-			case 5: {
+			
+			case '5': 
 				
 				break;
-			}
+			
+			
+			default: 
+				printf("Incorrecto");
+				system("pause");
+				
+			
 		}
 		
 	} while (opc != '5');
 	
-	
+
 	
 	return 0;
+}
+
+
+int cambiarClave() {
+	fflush(stdin);
+	char clave_actual[30];
+	
+	printf("Escribe la clave actual: ");
+	gets(clave_actual);
+	
+	// Verificamos contrseña
+	if (verificarAdmin(clave_actual) != 0) {
+		printf("No coincide\n");
+		system("pause");
+		return 1;
+		
+	}
+	
+	crearAdmin();
+	printf("Clave cambiada con exito");
+	system("pause");
+	
 }

@@ -29,22 +29,19 @@ int main() {
 
 		switch (opc) {
 			
-			case '1': {
+			case '1': 
 				adminMain();
 				break;
-			}
-			case '2': {
+			
+			case '2': 
 				printf("2");
 				system("pause");
 				break;
-			}
 			
-			default: {
+			default: 
 				printf("incorrecto");
 				system("pause");
-				break;
-			}
-			
+							
 		}
 		
 	} while (1);
