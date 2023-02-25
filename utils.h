@@ -24,14 +24,14 @@ int verificarAdmin(char clave[30]) {
 
 
 // Crear administrador nuevo
-void crearAdmin() {
+int crearAdmin() {
 	FILE *fp;
 	char clave[30];
 
 	fp = fopen("./data/superuser/admin", "w+");
 
 	printf("Inserte clave de administrador: \n");
-	printf("Minimo 8 caracteres y maximo 20\n Debe contener minusculas y mayusculas\n");
+	printf("Minimo 8 caracteres y maximo 30\n Debe contener minusculas y mayusculas\n");
 	printf("Debe contener numeros\n");
 	gets(clave);
 
@@ -57,7 +57,7 @@ void crearAdmin() {
 		// Existen mayúsculas y minúsculas
 		if (clave[i] >= 'A' && clave[i] <= 'Z' && mayus == 0) {
 			mayus ++;
-				
+		
 		} else if (clave[i] >= 'a' && clave[i] <= 'z' && minus == 0) {
 			minus ++;			
 		} 
@@ -65,16 +65,17 @@ void crearAdmin() {
 		if (clave[i] >= '0' && clave[i] <= '9' && nums == 0) {
 			nums ++;
 		}
+		
+		if (mayus != 0 && minus != 0 && nums != 0) { // se ha cumplido las condiciones
+			fprintf(fp, clave);
+			fclose(fp);
+			return 0;
+		}
 	}
-	
-	if (mayus == 0 || minus == 0 || nums == 0) {
-		printf("Debe contener mayusculas, minusculas y numeros");
-		system("pause");
-		return crearAdmin();
-	}
-	
-	fprintf(fp, clave);
-	fclose(fp);
+
+	printf("Debe contener mayusculas, minusculas y numeros");
+	system("pause");
+	return crearAdmin();
 }
 
 
