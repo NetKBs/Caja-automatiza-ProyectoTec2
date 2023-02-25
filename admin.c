@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include<dir.h>
 
 #include "utils.h"
 
 
 int cambiarClave();
+int restaurarSistema();
 
 int adminMain() {
 	
@@ -53,7 +55,10 @@ int adminMain() {
 			
 			
 			case '4': 
-				
+				temp = restaurarSistema();
+				if (!temp) { // Se ha restaurado el sistema a fábrica
+					opc = '5';
+				}
 				break;
 			
 			
@@ -76,6 +81,43 @@ int adminMain() {
 	return 0;
 }
 
+int restaurarSistema() {
+	fflush(stdin);
+	char clave_actual[30];
+	char opc;
+	
+	printf("RESTAURAR SISTEMA (ATENCIÓN)");
+	printf("Escribe la clave actual: ");
+	gets(clave_actual);
+	
+	// Verificamos contrseña
+	if (verificarAdmin(clave_actual) != 0) {
+		printf("No coincide\n");
+		system("pause");
+		
+	} else {
+		
+		printf("Parece que haz elegido restaurar el sistema. ");
+		printf("La restauracion del sistema eliminara todos los archivos almacenados:\n");
+		printf("Clave de admin, archivos temporales, facturas, reportes, productos registrados\n\n");
+		printf("Estas realmente seguro de proceder con la restauracion a fabrica del sistema?\n");
+		printf("1 => Si / Cualquier otra tecla => No\n");
+		scanf("%c", &opc);
+		
+		if (opc == '1') {
+			system("del data\\*.* /s /q");
+			system("cls");
+			return 0;
+			
+		}
+		
+		printf("Proceso cancelado\n");
+		system("pause");
+		return 1;
+	}
+	
+	
+}
 
 int cambiarClave() {
 	fflush(stdin);

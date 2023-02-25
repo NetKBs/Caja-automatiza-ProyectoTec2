@@ -15,9 +15,11 @@ int verificarAdmin(char clave[30]) {
 	fscanf(fp, "%s", file_text);
 	
 	if (strcmp(clave, file_text) != 0) {
+		fclose(fp);
 		return 1;
 	}
 	
+	fclose(fp);
 	return 0; // coninciden
 }
 
@@ -25,6 +27,7 @@ int verificarAdmin(char clave[30]) {
 
 // Crear administrador nuevo
 int crearAdmin() {
+	fflush(stdin);
 	FILE *fp;
 	char clave[30];
 

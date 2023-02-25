@@ -7,26 +7,28 @@
 #include "utils.h"
 
 int main() {
-
+	
 	struct stat file_stat; 
-  	
-  	// No existe la carpeta de almacenamiento de datos
-  	if (stat("./data/", &file_stat) != 0) {
-  		mkdir("./data/");
-		mkdir("./data/superuser/");	
-		
-	}
-	
-  	// Checar si existen los archivos de administrador (primera vez)
-    if (stat("./data/superuser/admin", &file_stat) != 0 || file_stat.st_size <= 0 ) {
-    	crearAdmin();
-    	printf("Cuenta de administrador creada con exito\n");
-		system("pause");
-    }
-	
-	char opc = '0';
 	
 	do {
+	  	
+	  	// No existe la carpeta de almacenamiento de datos
+	  	if (stat("./data/", &file_stat) != 0) {
+	  		mkdir("./data/");
+			mkdir("./data/superuser/");	
+			
+		}
+		
+	  	// Checar si existen los archivos de administrador (primera vez)
+	    if (stat("./data/superuser/admin", &file_stat) != 0 || file_stat.st_size <= 0 ) {
+	    	crearAdmin();
+	    	printf("Cuenta de administrador creada con exito\n");
+			system("pause");
+	    }
+		
+		char opc = '0';
+	
+	
 		fflush(stdin);
 		system("cls");
 		
