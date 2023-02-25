@@ -6,8 +6,6 @@
 #define _UTILSH_
 
 
-
-
 // Compara una clave con la clave del administrador
 int verificarAdmin(char clave[30]) {
 

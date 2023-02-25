@@ -24,6 +24,7 @@ int adminMain() {
 	
 	
 	char opc = '0';
+	short temp; // Para verificar procesos de funciones
 	
 	do {
 		fflush(stdin);
@@ -43,7 +44,11 @@ int adminMain() {
 			
 			
 			case '3': 
-				cambiarClave();
+				temp = cambiarClave();
+				if (!temp) { // Si se cambió, mandar al munú de inicio del programa
+					opc = '5';
+				}
+				
 				break;
 			
 			
@@ -90,5 +95,6 @@ int cambiarClave() {
 	crearAdmin();
 	printf("Clave cambiada con exito");
 	system("pause");
+	return 0;
 	
 }
