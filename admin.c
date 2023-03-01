@@ -4,6 +4,7 @@
 #include<dir.h>
 
 #include "utils.h"
+#include "admin_products.c"
 
 
 int cambiarClave();
@@ -42,6 +43,7 @@ int adminMain() {
 			
 		
 			case '2': 
+				adminProducts();
 				break;
 			
 			
@@ -80,6 +82,9 @@ int adminMain() {
 	
 	return 0;
 }
+
+
+
 
 int restaurarSistema() {
 	fflush(stdin);

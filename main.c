@@ -16,7 +16,7 @@ int main() {
 	  	if (stat("./data/", &file_stat) != 0) {
 	  		mkdir("./data/");
 			mkdir("./data/superuser/");	
-			
+			mkdir("./data/products/");	
 		}
 		
 	  	// Checar si existen los archivos de administrador (primera vez)
